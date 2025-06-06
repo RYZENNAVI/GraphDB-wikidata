@@ -1,0 +1,8 @@
+SELECT ?type WHERE {
+  wd:Q31 wdt:P31 ?type .
+}
+
+
+SELECT ?dob WHERE {
+  wd:Q23 wdt:P569 ?dob .
+}
