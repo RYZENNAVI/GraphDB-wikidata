@@ -1,0 +1,10 @@
+/target
+.vscode
+wikidata.graphdb
+/cache
+/wikidata
+/test-db
+merge_sort
+Cargo.lock
+.DS_Store
+.idea

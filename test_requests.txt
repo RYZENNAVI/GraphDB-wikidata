@@ -1,0 +1,56 @@
+# All listed requests here are tested for first_5_lines.txt
+# Belgium is what?
+SELECT ?item
+WHERE 
+{
+  wdt:Q31 wdt:P31 ?item .
+}
+
+# Print DB, should returns 3385 rows
+SELECT ?sub ?pred ?obj 
+WHERE 
+{
+  ?sub ?pred ?obj .
+}
+
+# Results into 1354 pairs
+SELECT ?p ?b
+WHERE 
+{
+  wdt:Q31 ?p ?b .
+}
+
+# Results into 1 pairs
+SELECT ?p2 ?b
+WHERE 
+{
+  ?b ?p2 wdt:Q31 .
+}
+
+# A join resulting in one triple
+SELECT ?p ?b ?p2
+WHERE 
+{
+  wdt:Q31 ?p ?b .
+  ?b ?p2 wdt:Q31 .
+}
+
+SELECT ?s (COUNT(DISTINCT ?p) as ?dis_number_pred) (COUNT(?p) as ?number_pred)
+WHERE { 
+   ?s ?p ?x
+}	
+GROUP BY ?s
+
+
+SELECT ?s (COUNT(?o) as ?count_objects) (GROUP_CONCAT(?o;SEPARATOR = ",") as ?group_concat) (SAMPLE(?o) as ?sample)
+WHERE { 
+   ?s wdt:P31 ?o
+}	
+GROUP BY ?s
+
+SELECT ?s (MAX(?o) as ?max)  (MIN(?o) as ?min)
+WHERE { 
+   ?s wdt:P31 ?o
+}	
+GROUP BY ?s
+
